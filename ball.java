@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.*; 
 
 public class ball{
     
@@ -7,8 +6,7 @@ public class ball{
     public int veleocityX = 2;
     private int x = 50;
     private int y = 600;
-    private int width = 20;
-    private int height = 20;
+    private int radius = 20;
 
     public void updatePosition(int newX, int newY) {
         this.x = newX;
@@ -23,14 +21,9 @@ public class ball{
         return y;
     }
 
-    public int getWidth() {
-        return width;
+    public int getRadius() {
+        return radius;
     }
-
-    public int getHeight() {
-        return height;
-    }
-
     public int getVelocityY() {
         return veleocityY;
     }
@@ -38,11 +31,7 @@ public class ball{
         return veleocityX;
     }
     public void paint(Graphics g) {
-        // Set color to blue
         g.setColor(Color.red);
-        //g.fillRect(500,300,100,50);
-        g.fillOval(x,y,width,height);
-
-
+        g.fillOval(x,y,radius,radius);
     }
 }
