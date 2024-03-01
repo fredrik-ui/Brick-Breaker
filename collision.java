@@ -24,7 +24,7 @@ public class collision {
             vx *= -1;
         }else if(posX+radius >= windowWidth){
             vx *=-1;
-        }else if(posY <= 0){
+        }else if(posY < 0){
             vy *= -1;
         }else if(posY+radius >= windowHeight){
             vy *= -1;

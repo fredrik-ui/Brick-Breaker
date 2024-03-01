@@ -27,7 +27,8 @@ public class MyFrame extends Frame {
         TimerTask ballMovementTask = new TimerTask() {
             @Override
             public void run() {
-
+                int posY;
+                int posX;
                 // Check if ball collides with the walls
                 int List[] = Collision.check_ball_list(
                     getWidth(),
@@ -38,23 +39,25 @@ public class MyFrame extends Frame {
                     myBall.getVelocityY(),
                     myBall.getVelocityX()
                 );
-                int posY=List[1];
-                int posX=List[0];
+                posY=List[1];
+                posX=List[0];
 
                 // Check if ball collides with paddle
-                posY = Collision.paddle_ball_colide(
-                    rectX,
-                    rectY,
-                    rectWidth,
-                    rectHeight,
-                    myBall.getRadius(),
-                    myBall.getX(), 
-                    myBall.getY(), 
-                    myBall.getVelocityY(),
-                    myBall.getVelocityX()
-                );
-
-
+                if(
+                    Collision.paddle_ball_colide(
+                        rectX,
+                        rectY,
+                        rectWidth,
+                        rectHeight,
+                        myBall.getRadius(),
+                        myBall.getX(), 
+                        myBall.getY(), 
+                        myBall.getVelocityY(),
+                        myBall.getVelocityX()
+                    ) == (myBall.veleocityY*-1)
+                ){
+                    posY = (myBall.veleocityY*-1);
+                }
 
                 myBall.veleocityX = posX;
                 myBall.veleocityY = posY;
@@ -110,7 +113,12 @@ public class MyFrame extends Frame {
         // Set color to blue
         myBall.paint(g);
         g.setColor(Color.BLUE);
-        g.fillRect(500, 300, 100, 50);
+        int x =0;
+        while(x< windowWidth) {
+            g.fillRect(10+x, 300, 100, 50);
+            x += 110;
+        }
+
         // g.fillOval(50,50,20,20);
 
         // Draw rectangle with the specified parameters
