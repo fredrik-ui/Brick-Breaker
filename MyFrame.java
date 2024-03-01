@@ -27,28 +27,47 @@ public class MyFrame extends Frame {
         TimerTask ballMovementTask = new TimerTask() {
             @Override
             public void run() {
-                // Update the ball's position based on its current position and any changes
-                // You should adjust these parameters based on your requirements
-                int List[] = Collision.check_ball_list(getWidth(),getHeight(),myBall.getWidth(),myBall.getHeight(),myBall.getX(), myBall.getY(), myBall.getVelocityY(),myBall.getVelocityX());
+
+                // Check if ball collides with the walls
+                int List[] = Collision.check_ball_list(
+                    getWidth(),
+                    getHeight(),
+                    myBall.getRadius(),
+                    myBall.getX(), 
+                    myBall.getY(), 
+                    myBall.getVelocityY(),
+                    myBall.getVelocityX()
+                );
                 int posY=List[1];
                 int posX=List[0];
-                System.out.println(myBall.getY() + posY);
-                //System.out.println(posX);
+
+                // Check if ball collides with paddle
+                posY = Collision.paddle_ball_colide(
+                    rectX,
+                    rectY,
+                    rectWidth,
+                    rectHeight,
+                    myBall.getRadius(),
+                    myBall.getX(), 
+                    myBall.getY(), 
+                    myBall.getVelocityY(),
+                    myBall.getVelocityX()
+                );
+
+
+
                 myBall.veleocityX = posX;
                 myBall.veleocityY = posY;
                 myBall.updatePosition(myBall.getX() - posX, myBall.getY() + posY);
 
-
                 // int posY = Collision.check_ball(getWidth(),getHeight(),myBall.getWidth(),myBall.getHeight(),myBall.getX(), myBall.getY(), myBall.getVelocityY(),myBall.getVelocityX());
                 // myBall.updatePosition(myBall.getX(), myBall.getY() + posY);
-
-
                 repaint(); // Repaint the frame to reflect the changes
             }
         };
 
         // Schedule the TimerTask
-        timer.scheduleAtFixedRate(ballMovementTask, 0, 10);
+        timer.scheduleAtFixedRate(ballMovementTask, 0, 50);
 
         addKeyListener(new KeyAdapter() {
             @Override
