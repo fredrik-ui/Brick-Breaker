@@ -34,4 +34,5 @@ public class ball{
         g.setColor(Color.red);
         g.fillOval(x,y,radius,radius);
     }
+
 }
