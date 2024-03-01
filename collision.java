@@ -1,9 +1,5 @@
-import java.awt.*;
-import java.awt.event.*; 
-
 public class collision {
 
-    // Constructor to initialize collision properties
     public collision() {
     }
 
@@ -22,37 +18,28 @@ public class collision {
 
     }
 
-    public int check_ball(int windowWidth, int windowHeight, int ballWidth, int ballHeight, int posX, int posY, int vy, int vx){
-
-        System.out.println(posY);
-        if(posX<0){
-            
-        }else if(posX+ballWidth >= windowWidth){
-        
-        }else if(posY < 0){
-            return vy;
-        }else if(posY+ballHeight >= windowHeight){
-            return -vy;
-        }
-
-        return vy;
-    }
-    public int[] check_ball_list(int windowWidth, int windowHeight, int ballWidth, int ballHeight, int posX, int posY, int vy, int vx){
+    public int[] check_ball_list(int windowWidth, int windowHeight, int radius, int posX, int posY, int vy, int vx){
 
         if(posX<0){
-            System.out.println("lllllll");
             vx *= -1;
-        }else if(posX+ballWidth >= windowWidth){
-            System.out.println("fghfg");
+        }else if(posX+radius >= windowWidth){
             vx *=-1;
         }else if(posY <= 0){
-            System.out.println("ASHD");
             vy *= -1;
-        }else if(posY+ballHeight >= windowHeight){
-            System.out.println("nnnnnnnnn");
+        }else if(posY+radius >= windowHeight){
             vy *= -1;
         }
         int[] result = {vx, vy};
         return result;
     }
+
+    public int paddle_ball_colide(int rectX, int rectY,int rectWidth, int rectHeight, int radius, int posX, int posY, int vy, int vx){
+
+        if(posY == rectY && (posX >= rectX && rectX+rectWidth >= posX)){
+            vy *= -1;
+        }
+
+        return vy;
+    }
+
 }
