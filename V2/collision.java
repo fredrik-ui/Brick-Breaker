@@ -6,7 +6,6 @@ public class collision {
     public int check_paddel(int rectX, int rectWidth, int windowWidth){
 
         if(rectX < 0){
-            System.out.println("HEJ");
             // Padel should stop
             return 1;
         }else if(rectX+rectWidth >= windowWidth){
@@ -24,9 +23,9 @@ public class collision {
             vx *= -1;
         }else if(posX+radius >= windowWidth){
             vx *=-1;
-        }else if(posY < 0){
+        }else if(posY-radius < 0){
             vy *= -1;
-        }else if(posY+radius >= windowHeight){
+        }else if(posY >= windowHeight){
             vy *= -1;
         }
         int[] result = {vx, vy};
@@ -34,8 +33,7 @@ public class collision {
     }
 
     public int paddle_ball_colide(int rectX, int rectY,int rectWidth, int rectHeight, int radius, int posX, int posY, int vy, int vx){
-
-        if(posY == rectY && (posX >= rectX && rectX+rectWidth >= posX)){
+        if(posY >= rectY && (posX >= rectX && rectX+rectWidth >= posX)){
             vy *= -1;
         }
 
