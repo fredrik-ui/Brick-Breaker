@@ -10,7 +10,7 @@ public class MyFrame extends Frame {
     private int windowWidth = 1000;
     private int windowHeight = 800;
     
-    private int rectX = 10;
+    private int rectX = 500;
     private int rectY = 700;
     private int rectWidth = 100;
     private int rectHeight = 50;
@@ -26,7 +26,7 @@ public class MyFrame extends Frame {
         setBackground(Color.GRAY);
         Bricks.create(0, 0, rectWidth, rectHeight, getWidth());
 
-        Timer timer = new Timer(30, new ActionListener() {
+        Timer timer = new Timer(10, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateBallPosition();
@@ -103,24 +103,40 @@ public class MyFrame extends Frame {
 
     }
     public void KeyPress(KeyEvent e){
+        int[] List = Collision.check_paddel(rectX, rectWidth, getWidth());
         switch (e.getKeyCode()) {
             // case KeyEvent.VK_UP:
             //     rectY -= 5; // Move the rectangle up
             //     break;
+
             case KeyEvent.VK_RIGHT:
-                if (Collision.check_paddel(rectX, rectWidth, getWidth()) == 2)
-                    rectX += 0;
-                else {
-                    rectX += 10; // Move the rectangle right
-                }
-                break;
-            case KeyEvent.VK_LEFT:
-                if (Collision.check_paddel(rectX, rectWidth, getWidth()) == 1)
-                    rectX += 0;
-                else {
-                    rectX -= 10; // Move the rectangle right
-                }
-                break;
+            if (List[0] == 2)
+                rectX += List[1];
+            else {
+                rectX += 100; // Move the rectangle right
+            }
+            break;
+        case KeyEvent.VK_LEFT:
+            if (List[0] == 1)
+                rectX += List[1];
+            else {
+                rectX -= 100; // Move the rectangle right
+            }
+            break;
+            // case KeyEvent.VK_RIGHT:
+            //     if (Collision.check_paddel(rectX, rectWidth, getWidth()) == 2)
+            //         rectX += 0;
+            //     else {
+            //         rectX += 100; // Move the rectangle right
+            //     }
+            //     break;
+            // case KeyEvent.VK_LEFT:
+            //     if (Collision.check_paddel(rectX, rectWidth, getWidth()) == 1)
+            //         rectX += 0;
+            //     else {
+            //         rectX -= 100; // Move the rectangle right
+            //     }
+            //     break;
             // case KeyEvent.VK_DOWN:
             //     rectY += 5; // Move the rectangle down
             //     break;
