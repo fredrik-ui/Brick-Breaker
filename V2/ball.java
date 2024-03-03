@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class ball{
     
-    public int veleocityY = 10;
+    public int veleocityY = 4;
     public int veleocityX = 2;
     private int x = 50;
     private int y = 600;
