@@ -3,18 +3,21 @@ public class collision {
     public collision() {
     }
 
-    public int check_paddel(int rectX, int rectWidth, int windowWidth){
+    public int[] check_paddel(int rectX, int rectWidth, int windowWidth){
 
-        if(rectX < 0){
-            // Padel should stop
-            return 1;
-        }else if(rectX+rectWidth >= windowWidth){
-            //Paddel should stop
-            return 2;
-        }
+        int[] result = new int[2]; 
 
-        return 0;
-
+        // Check if moving right will cause collision with the right border
+        if (rectX + rectWidth >= windowWidth) {
+            result[0] = 2; // Right side collision
+            result[1] = windowWidth - rectX - rectWidth; // Calculate remaining pixels
+        } 
+        // Check if moving left will cause collision with the left border
+        else if (rectX <= 0) {
+            result[0] = 1; // Left side collision
+            result[1] = -rectX; // Calculate remaining pixels
+        } 
+        return result;
     }
 
     public int[] check_ball_list(int windowWidth, int windowHeight, int radius, int posX, int posY, int vy, int vx){

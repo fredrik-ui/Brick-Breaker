@@ -33,32 +33,20 @@ public class bricks{
     public int collide(int ballX, int ballY, int radius, int vy){
         for (int i = 0; i < arrayList2D.size(); i++) {
             ArrayList<Integer> brick = arrayList2D.get(i);
-            int BposY = brick.get(1); // Assuming the y-coordinate of the brick is stored at index 1
-            //int BposX = brick.get(0); // Assuming the y-coordinate of the brick is stored at index 1    
-            // Check for collision between ball and brick vertically
-            if (ballY + radius >= BposY && ballY - radius <= BposY + brick.get(3)) {
-                // Collision detected
-                System.out.println("Collision detected with brick at position: " + BposY);
+            int BposY = brick.get(1);
+            if (
+                ballY + radius >= BposY && 
+                ballY - radius <= BposY + brick.get(3) &&
+                ballX >= brick.get(0) &&
+                brick.get(0) + brick.get(2) >= ballX
+            ) {
                 vy *=-1;
-                // Remove the brick from arrayList2D
                 arrayList2D.remove(i);
-                
-                // Replicate it with null or some other placeholder
-                
-                // Exit the loop since we've found and removed the brick
                 break;
             }
         }
         return vy;
     }
-
-    // public int collide(int rectX, int rectY,int rectWidth, int rectHeight, int radius, int posX, int posY, int vy, int vx){
-    //     if(posY >= rectY && (posX >= rectX && rectX+rectWidth >= posX)){
-    //         vy *= -1;
-    //     }
-
-    //     return vy;
-    // }
 
     
     public void paint(Graphics g) {
