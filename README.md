@@ -24,8 +24,8 @@ This class handles the collision for the ball and the paddle. The reason brick c
 This files is a powershell script that removes all the created classes and compiles and runs the main file. Sometimes the old classes dont update when changes has been done. But for playing it can be used but else just comiple the main file. 
 
 ## TO-DO:
-*Score system
-*Repet levels when one is cleared
-*Improve the performance and feel of the game
-*Bettwe interface for the player to interact with
-*Possibly be able to save previous scores and bring that up
+* Score system
+* Repet levels when one is cleared
+* Improve the performance and feel of the game
+* Bettwe interface for the player to interact with
+* Possibly be able to save previous scores and bring that up
