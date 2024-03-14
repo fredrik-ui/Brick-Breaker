@@ -20,10 +20,10 @@ This section deals with the creation of the paddle that moves and the bricks tha
 ## [Collision](V2/collision.java):
 This class handles the collision for the ball and the paddle. The reason brick collision is not done here is that all the brick data is located in the `Bricks` class and doesn't need to be used as arguments for the collision class. The focus here is on the paddle, ensuring it stops at the edges of the screen. The ball's position needs to be updated if there is a collision, with a change in velocity in either or both directions by *(-1). This is done both with the walls and the paddle. It all comes down to constantly checking the positions of everything.
 
-## [run](V2/run.ps1):
+## [Run](V2/run.ps1):
 This files is a powershell script that removes all the created classes and compiles and runs the main file. Sometimes the old classes dont update when changes has been done. But for playing it can be used but else just comiple the main file. 
 
-## TO DO:
+## TO-DO:
 *Score system
 *Repet levels when one is cleared
 *Improve the performance and feel of the game
