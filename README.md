@@ -2,8 +2,9 @@
 
 This is a simple game in Java. Brick breaker, as you might know, is a game where a paddle bounces a ball towards bricks. When colliding, it removes the brick and awards a certain amount of points. This game is a work in progress and not yet complete.
 
-##[Main file](./path/to/main.java):
-This file, `main.java`, creates the window (as an instance). More functionality can be added here later, but for now, it's just a place to start from. **Only need to compile this file and run it to launch the game.**
+## [Main file](./path/to/main.java):
+
+This file creates the window (as an instance). More functionality can be added here later, but for now, it's just a place to start from. **Only need to compile this file and run it to launch the game.**
 
 <!--This file creates the window (as an instance). More functionality can be added here later, but for now, it's just a place to start from. **Only need to compile this file and run it to launch the game.**-->
 
